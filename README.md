@@ -1,8 +1,8 @@
 ---
-title: Tumor And Diabetes
-emoji: 🌖
-colorFrom: purple
-colorTo: yellow
+title: Tumor Classifier
+emoji: 🏢
+colorFrom: blue
+colorTo: purple
 sdk: gradio
 sdk_version: 3.0.20
 app_file: app.py
