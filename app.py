@@ -4,7 +4,6 @@ from tensorflow.keras.applications import imagenet_utils
 from tensorflow.keras.utils import img_to_array
 from tensorflow.keras.models import load_model
 import numpy as np
-import cv2
 import pickle
 
 

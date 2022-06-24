@@ -1,12 +1,11 @@
 ### STAGE 1: BUILD ###
 FROM python:3.9.13-slim as build-step
-RUN mkdir -p /app
+RUN mkdir /app
 WORKDIR /app
-COPY requirements.txt ./
+COPY requirements.txt ./app
 RUN apt-get update
-RUN apt-get install ffmpeg libsm6 libxext6  -y
-RUN pip3 install -r requirements.txt
-COPY . ./
+RUN pip install -r requirements.txt
+COPY . .
 
 EXPOSE 7860
-CMD [ "python3", "app.py"]
+CMD [ "python", "app.py"]
