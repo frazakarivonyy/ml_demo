@@ -9,14 +9,14 @@ RUN mkdir -p /app
 #WORKDIR /home/python/app
 WORKDIR /app
 #ENV PATH="/home/python/bin:${PATH}"
-COPY . ./app/
+COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip >/dev/null 2>&1
 
 #COPY --chown=python:python requirements.txt requirements.txt
 RUN pip install -r ./app/requirements.txt
 
 #COPY --chown=python:python . .
-COPY . ./app
+COPY . .
 
 EXPOSE 7860
 CMD [ "python", "app.py"]
