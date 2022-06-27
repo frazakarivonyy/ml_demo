@@ -1,21 +1,18 @@
 ### STAGE 1: BUILD ###
 FROM python:3.9.13-slim as build-step
+RUN useradd -ms /bin/bash python
+USER python
 
+RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
 #USER root
+WORKDIR /home/python/app
 
 RUN pip install --upgrade pip >/dev/null 2>&1
 
-RUN useradd -ms /bin/bash deamon
-USER deamon
-
-WORKDIR /app
-
-COPY --chown=deamon:deamon requirements.txt requirements.txt
+COPY --chown=python:python requirements.txt requirements.txt
 RUN pip install --user -r requirements.txt
 
-#ENV PATH="/home/user/.local/bin:${PATH}"
-
-COPY --chown=deamon:deamon . .
+COPY --chown=python:python . .
 
 EXPOSE 7860
 CMD [ "python", "app.py"]
