@@ -13,7 +13,7 @@ COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip >/dev/null 2>&1
 
 #COPY --chown=python:python requirements.txt requirements.txt
-RUN pip install -r ./app/requirements.txt
+RUN pip install -r requirements.txt
 
 #COPY --chown=python:python . .
 COPY . .
