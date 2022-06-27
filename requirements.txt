@@ -1,7 +1,0 @@
-gradio==3.0.20
-matplotlib==3.5.2
-numpy==1.22.4
-pandas==1.4.2
-tensorflow==2.9.1
-tensorflow-estimator==2.9.0
-tensorflow-io-gcs-filesystem==0.26.0
