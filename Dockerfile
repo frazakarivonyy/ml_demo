@@ -1,19 +1,19 @@
 ### STAGE 1: BUILD ###
 FROM python:3.9.13-slim as build-step
 
-USER root
+#USER root
 
 RUN pip install --upgrade pip >/dev/null 2>&1
 
 RUN useradd -ms /bin/bash deamon
 USER deamon
 
-WORKDIR /home/deamon
+WORKDIR /app
 
 COPY --chown=deamon:deamon requirements.txt requirements.txt
 RUN pip install --user -r requirements.txt
 
-ENV PATH="/home/user/.local/bin:${PATH}"
+#ENV PATH="/home/user/.local/bin:${PATH}"
 
 COPY --chown=deamon:deamon . .
 
