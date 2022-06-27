@@ -14,6 +14,7 @@ RUN pip install --upgrade pip >/dev/null 2>&1
 
 #COPY --chown=python:python requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+RUN chmod 766 /app
 
 #COPY --chown=python:python . .
 COPY . .
