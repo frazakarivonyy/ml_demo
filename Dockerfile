@@ -6,6 +6,7 @@ USER python
 RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
 #USER root
 WORKDIR /home/python/app
+ENV PATH="/home/user/.local/bin:${PATH}"
 
 RUN pip install --upgrade pip >/dev/null 2>&1
 
