@@ -14,16 +14,16 @@ USER python
 WORKDIR /app
 
 ENV PATH="/home/python/.local/bin:${PATH}"
-COPY --chown=python:python ./requirements.txt /app/requirements.txt
+COPY --chown=python:python requirements.txt requirements.txt
 
-RUN pip install --upgrade pip >/dev/null 2>&1
+RUN python -m pip install --upgrade pip >/dev/null 2>&1
 
 #COPY --chown=python:python requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 #RUN chmod 777 -R /app
 
 #COPY --chown=python:python . .
-COPY  --chown=python:python . /app
+COPY  --chown=python:python . .
 
 CMD python app.py
 
