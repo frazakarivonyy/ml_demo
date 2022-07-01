@@ -1,12 +1,12 @@
 ### STAGE 1: BUILD ###
 FROM python:3.9.13-slim as build-step
-#RUN useradd -ms /bin/bash python
-#USER python
+RUN useradd -ms /bin/bash python
+USER python
 VOLUME [ "/usr","/app" ]
 
 #RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
 #USER root
-#RUN mkdir -p /app
+RUN mkdir -p /app
 #WORKDIR /home/python/app
 WORKDIR /app
 #ENV PATH="/home/python/.local/bin:${PATH}"
