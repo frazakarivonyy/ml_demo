@@ -1,6 +1,6 @@
 ### STAGE 1: BUILD ###
 FROM python:3.9.13-slim as build-step
-#RUN useradd -ms /bin/bash python
+RUN useradd -ms /bin/bash python
 #USER python
 
 #RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
@@ -8,7 +8,9 @@ FROM python:3.9.13-slim as build-step
 RUN mkdir -p /app
 #WORKDIR /home/python/app
 WORKDIR /app
-#ENV PATH="/home/python/bin:${PATH}"
+USER python
+ENV PATH="/usr/local/lib/:${PATH}"
+ENV PATH="/home/python/.local/bin:${PATH}"
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip >/dev/null 2>&1
 
