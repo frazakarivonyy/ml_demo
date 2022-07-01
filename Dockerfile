@@ -8,8 +8,8 @@ RUN useradd -ms /bin/bash python
 RUN mkdir -p /app
 #WORKDIR /home/python/app
 WORKDIR /app
-USER python
-ENV PATH="/usr/local/lib/:${PATH}"
+
+ENV PATH="/lib/modules/:${PATH}"
 ENV PATH="/home/python/.local/bin:${PATH}"
 COPY requirements.txt requirements.txt
 RUN pip install --upgrade pip >/dev/null 2>&1
@@ -17,7 +17,9 @@ RUN pip install --upgrade pip >/dev/null 2>&1
 #COPY --chown=python:python requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 #RUN chmod 777 -R /app
-
+RUN chown -R python:python /app
+#RUN chown -R python:python /usr
+USER python
 #COPY --chown=python:python . .
 COPY . .
 
