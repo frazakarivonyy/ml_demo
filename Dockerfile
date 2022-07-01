@@ -5,21 +5,22 @@ RUN useradd -ms /bin/bash python
 VOLUME [ "/usr", "/home" ]
 
 #RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
-#USER root
+USER root
 
-RUN mkdir -p /app
-RUN chown python /app
+RUN mkdir /app
+RUN chown python:python /app
 USER python
 #WORKDIR /home/python/app
 WORKDIR /app
 
-ENV PATH="/home/python/.local/bin:${PATH}"
+ENV PATH="/usr/local/bin:/home/python/.local/bin:${PATH}"
+#ENV PATH="/usr/local/bin:${PATH}"
 COPY --chown=python:python requirements.txt requirements.txt
 
-RUN python -m pip install --user --upgrade pip >/dev/null 2>&1
+RUN /usr/local/bin/python -m pip install --user --upgrade pip >/dev/null 2>&1
 
 #COPY --chown=python:python requirements.txt requirements.txt
-RUN pip install --user -r requirements.txt
+RUN pip install -r requirements.txt
 #RUN chmod 777 -R /app
 
 #COPY --chown=python:python . .
