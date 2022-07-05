@@ -5,13 +5,13 @@ USER python
 
 #RUN mkdir -p /home/python/app && chown -R python:python /home/python/app 
 #USER root
-RUN mkdir /app
+RUN mkdir /home/python/app
 #WORKDIR /home/python/app
 WORKDIR /home/python/app
 #RUN chown -R python:python /app
 #RUN echo PYTHONPATH
 
-ENV PATH="/usr/local/bin:${PATH}"
+ENV PATH="/home/python/.local/bin:/usr/local/bin:${PATH}"
 
 COPY --chown=python requirements.txt requirements.txt
 RUN pip install --user --upgrade pip \
