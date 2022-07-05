@@ -8,7 +8,7 @@ RUN useradd -m -u 1000 python
 RUN mkdir -p /app
 #WORKDIR /home/python/app
 WORKDIR /app
-RUN chown -R python:python /app
+#RUN chown -R python:python /app
 #RUN echo PYTHONPATH
 
 ENV PATH="/usr/local/bin:${PATH}"
@@ -21,10 +21,11 @@ RUN pip install --upgrade pip \
 #RUN chmod 777 -R /app
 
 #RUN chown -R python:python /usr
+COPY --chown=python . .
 USER python
 #COPY --chown=python:python . .
 
-COPY . .
+#COPY . .
 
 EXPOSE 7860
 
