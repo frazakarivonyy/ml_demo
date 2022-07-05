@@ -3,7 +3,8 @@ FROM python:3.9.13-slim as build-step
 RUN useradd -m -u 1000 python
 USER python
 
-RUN mkdir /home/python/app
+RUN mkdir /home/python/app \
+    && chmod 777 -R /home/python/app
 
 WORKDIR /home/python/app
 
@@ -13,7 +14,7 @@ COPY --chown=python requirements.txt requirements.txt
 
 RUN pip install --user --upgrade pip \
     && pip install --user -r requirements.txt
-    
+
 COPY --chown=python . .
 EXPOSE 7860
 
